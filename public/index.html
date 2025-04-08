@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ExpenseSync</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login-section">
+    <h1>Login</h1>
+    <form id="login-form">
+      <input type="text" id="login-username" placeholder="Username" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <button onclick="showSignup()">Sign Up</button>
+  </div>
+
+  <div id="signup-section" style="display: none;">
+    <h1>Sign Up</h1>
+    <form id="signup-form">
+      <input type="text" id="signup-username" placeholder="Username" required>
+      <input type="text" id="signup-name" placeholder="Name" required>
+      <input type="password" id="signup-password" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <button onclick="showLogin()">Back to Login</button>
+  </div>
+
+  <div id="dashboard" style="display: none;">
+    <nav>
+      <button onclick="showSection('expenses')">Expenses</button>
+      <button onclick="showSection('inventory')">Inventory</button>
+      <button onclick="showSection('clients')">Clients</button>
+      <button onclick="showSection('issues')">Issues</button>
+      <button onclick="logout()">Logout</button>
+    </nav>
+
+    <div id="expenses-section" class="dashboard-section" style="display: none;">
+      <h2>Expenses</h2>
+      <form id="expense-form">
+        <input type="number" id="expense-amount" placeholder="Amount" step="0.01" required>
+        <input type="text" id="expense-description" placeholder="Description" required>
+        <input type="date" id="expense-date" required>
+        <button type="submit" id="submit-expense-btn">Submit</button>
+      </form>
+      <table id="expenses-table">
+        <thead><tr><th>Staff</th><th>Date</th><th>Amount</th><th>Description</th><th>Status</th><th>Admin Note</th><th>Action</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="inventory-section" class="dashboard-section" style="display: none;">
+      <h2>Inventory Management</h2>
+      <form id="inventory-form">
+        <input type="text" id="item-type" placeholder="Item Type" required>
+        <input type="text" id="item-id" placeholder="Item ID" required>
+        <select id="item-status" required>
+          <option value="In Stock">In Stock</option>
+          <option value="Checked Out">Checked Out</option>
+          <option value="Installed">Installed</option>
+        </select>
+        <input type="text" id="item-location" placeholder="Location" required>
+        <button type="submit" id="submit-inventory-btn">Add Item</button>
+      </form>
+      <table id="inventory-table">
+        <thead><tr><th>Type</th><th>ID</th><th>Status</th><th>Location</th><th>Checked Out To</th><th>Action</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="clients-section" class="dashboard-section" style="display: none;">
+      <h2>Client Management</h2>
+      <form id="client-form">
+        <input type="text" id="client-name" placeholder="Name" required>
+        <input type="text" id="client-address" placeholder="Address" required>
+        <input type="text" id="client-contact" placeholder="Contact" required>
+        <textarea id="client-notes" placeholder="Notes"></textarea>
+        <button type="submit" id="submit-client-btn">Add Client</button>
+      </form>
+      <table id="clients-table">
+        <thead><tr><th>Name</th><th>Address</th><th>Contact</th><th>Notes</th><th>Action</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="issues-section" class="dashboard-section" style="display: none;">
+      <h2>Issue Tracking</h2>
+      <form id="issue-form">
+        <select id="issue-client-id" required></select>
+        <input type="text" id="issue-title" placeholder="Title" required>
+        <textarea id="issue-description" placeholder="Description" required></textarea>
+        <select id="issue-assigned-to" required></select>
+        <button type="submit" id="submit-issue-btn">Log Issue</button>
+      </form>
+      <table id="issues-table">
+        <thead><tr><th>Client</th><th>Title</th><th>Description</th><th>Status</th><th>Assigned To</th><th>Action</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
